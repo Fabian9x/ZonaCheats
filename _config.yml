@@ -1,0 +1,84 @@
+# ========================================
+#     CONFIGURACIÓN PARA GITHUB PAGES
+#     ========================================
+
+# Configuración básica
+title: "Zona Cheats - Gaming Tools & Cheats"
+description: "Plataforma web moderna para herramientas de gaming y cheats premium"
+author: "Wini Hax TV"
+email: "contacto@zonacheats.com"
+
+# Configuración de GitHub Pages
+baseurl: "" # Dejar vacío para repositorio raíz
+url: "https://tu-usuario.github.io" # Cambiar por tu usuario de GitHub
+
+# Configuración de plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Configuración de colecciones
+collections:
+  products:
+    output: true
+    permalink: /:collection/:name/
+
+# Configuración de defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+      author: "Wini Hax TV"
+
+# Configuración de exclusión
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata
+  - .gitignore
+  - .git
+  - .vscode
+  - .idea
+
+# Configuración de inclusión
+include:
+  - _redirects
+
+# Configuración de compresión
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: [html, head, body]
+
+# Configuración de SEO
+seo:
+  type: "WebSite"
+  name: "Zona Cheats"
+  description: "Plataforma web moderna para herramientas de gaming y cheats premium"
+  url: "https://tu-usuario.github.io"
+  image: "/logo_wini.png"
+  twitter:
+    card: "summary_large_image"
+    site: "@winihaxtv"
+  facebook:
+    app_id: "123456789"
+    admins: "123456789"
+
+# Configuración de feeds
+feed:
+  path: feed.xml
+  limit: 20
+
+# Configuración de sitemap
+sitemap:
+  changefreq: weekly
+  priority: 0.8
