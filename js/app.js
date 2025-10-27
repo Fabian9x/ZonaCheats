@@ -1,107 +1,137 @@
-// Configuración de partículas
-particlesJS('particles-js', {
-    "particles": {
-        "number": {
-            "value": 120,
-            "density": {
-                "enable": true,
-                "value_area": 600
-            }
-        },
-        "color": {
-            "value": "#DC143C"
-        },
-        "shape": {
-            "type": "circle",
-            "stroke": {
-                "width": 0,
-                "color": "#000000"
-            },
-            "polygon": {
-                "nb_sides": 5
-            }
-        },
-        "opacity": {
-            "value": 0.8,
-            "random": true,
-            "anim": {
-                "enable": true,
-                "speed": 1,
-                "opacity_min": 0.2,
-                "sync": false
-            }
-        },
-        "size": {
-            "value": 2,
-            "random": true,
-            "anim": {
-                "enable": true,
-                "speed": 20,
-                "size_min": 0.5,
-                "sync": false
-            }
-        },
-        "line_linked": {
-            "enable": true,
-            "distance": 200,
-            "color": "#DC143C",
-            "opacity": 0.4,
-            "width": 1
-        },
-        "move": {
-            "enable": true,
-            "speed": 2,
-            "direction": "none",
-            "random": true,
-            "straight": false,
-            "out_mode": "out",
-            "attract": {
-                "enable": false,
-                "rotateX": 600,
-                "rotateY": 1200
-            }
-        }
-    },
-    "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-            "onhover": {
-                "enable": true,
-                "mode": "repulse"
-            },
-            "onclick": {
-                "enable": true,
-                "mode": "push"
-            },
-            "resize": true
-        },
-        "modes": {
-            "grab": {
-                "distance": 400,
-                "line_linked": {
-                    "opacity": 1
+// Configuración de partículas simplificada y funcional
+document.addEventListener('DOMContentLoaded', function() {
+    // Verificar que el contenedor existe
+    const particlesContainer = document.getElementById('particles-js');
+    if (!particlesContainer) {
+        console.error('Contenedor de partículas no encontrado');
+        return;
+    }
+    
+    console.log('Contenedor de partículas encontrado:', particlesContainer);
+    
+    // Verificar que particlesJS está disponible
+    if (typeof particlesJS === 'undefined') {
+        console.error('particlesJS no está disponible');
+        return;
+    }
+    
+    console.log('particlesJS está disponible');
+    
+    // Configuración básica de partículas
+    particlesJS('particles-js', {
+        "particles": {
+            "number": {
+                "value": 80,
+                "density": {
+                    "enable": true,
+                    "value_area": 800
                 }
             },
-            "bubble": {
-                "distance": 400,
-                "size": 40,
-                "duration": 2,
-                "opacity": 8,
-                "speed": 3
+            "color": {
+                "value": "#DC143C"
             },
-            "repulse": {
-                "distance": 200,
-                "duration": 0.4
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                }
             },
-            "push": {
-                "particles_nb": 4
+            "opacity": {
+                "value": 0.5,
+                "random": true,
+                "anim": {
+                    "enable": true,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
             },
-            "remove": {
-                "particles_nb": 2
+            "size": {
+                "value": 3,
+                "random": true,
+                "anim": {
+                    "enable": true,
+                    "speed": 2,
+                    "size_min": 0.5,
+                    "sync": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#DC143C",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 2,
+                "direction": "none",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
             }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "repulse"
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                    "distance": 400,
+                    "line_linked": {
+                        "opacity": 1
+                    }
+                },
+                "bubble": {
+                    "distance": 400,
+                    "size": 40,
+                    "duration": 2,
+                    "opacity": 8,
+                    "speed": 3
+                },
+                "repulse": {
+                    "distance": 200,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                },
+                "remove": {
+                    "particles_nb": 2
+                }
+            }
+        },
+        "retina_detect": true
+    });
+    
+    console.log('Partículas inicializadas correctamente');
+    
+    // Verificar que el canvas se creó
+    setTimeout(() => {
+        const canvas = particlesContainer.querySelector('canvas');
+        if (canvas) {
+            console.log('Canvas de partículas creado:', canvas);
+        } else {
+            console.error('Canvas de partículas no se creó');
         }
-    },
-    "retina_detect": true
+    }, 1000);
 });
 
 // Smooth scrolling para los enlaces de navegación
@@ -262,54 +292,65 @@ function addThemeControls() {
 // Descomenta la siguiente línea si quieres agregar controles de tema
 // addThemeControls();
 
-// Discord Botón con Contador
+// Discord Widget con API Oficial
 document.addEventListener('DOMContentLoaded', function() {
-    const discordBtn = document.getElementById('discordBtn');
-    const onlineCount = document.getElementById('onlineCount');
+    const SERVER_ID = '1047547367336980570';
     
-    // Función para obtener miembros en línea (simulada)
-    // En producción, esto se conectaría a la Discord API
-    function updateDiscordCount() {
-        // Simulación de datos - reemplaza con tu lógica real
-        const mockOnlineCount = Math.floor(Math.random() * 50) + 20; // 20-70 miembros
-        onlineCount.textContent = mockOnlineCount;
-        
-        // Actualizar cada 30 segundos
-        setTimeout(updateDiscordCount, 30000);
+    // Función para obtener datos reales del servidor Discord usando Discord API
+    async function getDiscordServerInfo() {
+        try {
+            // Usar la API pública de Discord para obtener información del servidor
+            const response = await fetch(`https://discord.com/api/guilds/${SERVER_ID}/widget.json`);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            console.log('Datos del servidor Discord:', data);
+            
+            // Mostrar información en consola para debugging
+            if (data.presence_count !== undefined) {
+                console.log(`Usuarios en línea: ${data.presence_count}`);
+            }
+            
+        } catch (error) {
+            console.error('Error obteniendo datos de Discord:', error);
+            
+            // Fallback: intentar obtener datos usando un proxy CORS
+            tryFallbackDiscordAPI();
+        }
     }
     
-    // Función para redirigir a Discord
-    function redirectToDiscord() {
-        // Reemplaza con tu enlace de Discord real
-        const discordInvite = 'https://discord.gg/zycPUDpD';
-        window.open(discordInvite, '_blank');
-    }
-    
-    // Event listener para el botón
-    if (discordBtn) {
-        discordBtn.addEventListener('click', redirectToDiscord);
+    // Función de respaldo usando un proxy CORS
+    async function tryFallbackDiscordAPI() {
+        try {
+            // Usar un proxy CORS público como alternativa
+            const proxyUrl = 'https://api.allorigins.win/raw?url=';
+            const discordApiUrl = `https://discord.com/api/guilds/${SERVER_ID}/widget.json`;
+            
+            const response = await fetch(proxyUrl + encodeURIComponent(discordApiUrl));
+            const data = await response.json();
+            
+            if (data.presence_count !== undefined) {
+                console.log(`Usuarios en línea (fallback): ${data.presence_count}`);
+            }
+            
+        } catch (fallbackError) {
+            console.error('Error en fallback API:', fallbackError);
+        }
     }
     
     // Inicializar contador
-    updateDiscordCount();
+    getDiscordServerInfo();
     
-    // Función real para conectar con Discord API (requiere bot token)
-    /*
-    async function getRealDiscordCount() {
-        try {
-            const response = await fetch('https://discord.com/api/guilds/TU_SERVER_ID', {
-                headers: {
-                    'Authorization': 'Bot TU_BOT_TOKEN'
-                }
-            });
-            const data = await response.json();
-            onlineCount.textContent = data.approximate_member_count || '--';
-        } catch (error) {
-            console.error('Error obteniendo datos de Discord:', error);
-            onlineCount.textContent = '--';
-        }
-    }
-    */
+    // Actualizar cada 30 segundos
+    setInterval(getDiscordServerInfo, 30000);
+    
+    // Actualizar cuando la ventana vuelve a estar en foco
+    window.addEventListener('focus', getDiscordServerInfo);
+});
 
     // Video functionality
     const wallVideo = document.getElementById('wallVideo');
@@ -570,4 +611,3 @@ document.addEventListener('DOMContentLoaded', function() {
             dropdown.classList.toggle('active');
         });
     });
-});

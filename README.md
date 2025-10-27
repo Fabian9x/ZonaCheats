@@ -159,7 +159,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 ## 👨‍💻 Autor
 
-**TechnoDev**
+**Wini Hax TV**
 - GitHub: [@tu-usuario](https://github.com/tu-usuario)
 - Discord: [Servidor de Discord](https://discord.gg/Zt6bxFDNwm)
 
@@ -172,4 +172,3 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 ---
 
 ⭐ **¡No olvides darle una estrella al repositorio si te gusta el proyecto!**
-
