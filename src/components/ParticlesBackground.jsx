@@ -4,14 +4,14 @@ import { useEffect, useRef } from 'react'
 const particlesConfig = {
   particles: {
     number: {
-      value: 80,
+      value: 60,
       density: {
         enable: true,
         value_area: 800
       }
     },
     color: {
-      value: '#ffffff'
+      value: '#ff0000'
     },
     shape: {
       type: 'circle',
@@ -34,7 +34,7 @@ const particlesConfig = {
       }
     },
     size: {
-      value: 5,
+      value: 2,
       random: true,
       anim: {
         enable: false,
@@ -52,7 +52,7 @@ const particlesConfig = {
     },
     move: {
       enable: true,
-      speed: 6,
+      speed: 4,
       direction: 'none',
       random: false,
       straight: false,
@@ -122,8 +122,8 @@ const ParticlesBackground = () => {
         const response = await fetch(jsonPath)
         if (response.ok) {
           const jsonConfig = await response.json()
-          // Adaptar colores a la paleta rojo, negro y blanco
-          jsonConfig.particles.color.value = '#ffffff'
+          // Adaptar colores a solo rojo
+          jsonConfig.particles.color.value = '#ff0000'
           jsonConfig.particles.line_linked.color = '#ff0000'
           jsonConfig.particles.shape.stroke.color = '#000000'
           config = jsonConfig
