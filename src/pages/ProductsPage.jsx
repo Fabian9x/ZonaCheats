@@ -6,11 +6,17 @@ const ProductsPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
+  const getImagePath = (imageName) => {
+    return import.meta.env.DEV 
+      ? `/${imageName}` 
+      : `${import.meta.env.BASE_URL}${imageName}`
+  }
+
   const products = [
     {
       id: 1,
       name: 'PROYECTO SUPREME',
-      image: '/proyectosupreme.png',
+      image: getImagePath('proyectosupreme.png'),
       description: 'Panel básico con funciones esenciales',
       price30: { sol: 50, usd: 15 },
       price60: { sol: 100, usd: 27 },
@@ -19,7 +25,7 @@ const ProductsPage = () => {
     {
       id: 2,
       name: 'PANEL ANDROID',
-      image: '/panelandroid.png',
+      image: getImagePath('panelandroid.png'),
       description: 'Panel optimizado para dispositivos Android',
       price30: { sol: 50, usd: 15 },
       price60: { sol: 100, usd: 27 },
@@ -28,7 +34,7 @@ const ProductsPage = () => {
     {
       id: 3,
       name: 'PANEL BYPASS',
-      image: '/panelbypass.png',
+      image: getImagePath('panelbypass.png'),
       description: 'Panel avanzado con sistema de bypass',
       price7: { sol: 40, usd: 11 },
       price60: { sol: 120, usd: 32 },
@@ -37,7 +43,7 @@ const ProductsPage = () => {
     {
       id: 4,
       name: 'PANEL BASIC',
-      image: '/panelbasic.png',
+      image: getImagePath('panelbasic.png'),
       description: 'Panel profesional con todas las funciones',
       price30: { sol: 70, usd: 20 },
       price60: { sol: 140, usd: 38 },
@@ -46,7 +52,7 @@ const ProductsPage = () => {
     {
       id: 5,
       name: 'PANEL SUPREME',
-      image: '/panelsupreme.png',
+      image: getImagePath('panelsupreme.png'),
       description: 'Panel premium con soporte prioritario',
       price30: { sol: 90, usd: 25 },
       price60: { sol: 180, usd: 48 },
