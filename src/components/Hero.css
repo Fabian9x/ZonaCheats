@@ -1,0 +1,177 @@
+.hero-section {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin-top: 155px; /* Aumentado para dar espacio al logo que sobresale */
+}
+
+.hero-container {
+  max-width: 1600px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Lado Izquierdo - Texto */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  margin: 0 0 1rem 0;
+}
+
+.hero-highlight {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ff0000;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  letter-spacing: 0.2rem;
+}
+
+
+/* Centro - Imagen */
+.hero-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Lado Derecho - Discord Widget */
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+  .hero-container {
+    gap: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-highlight {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 2rem;
+  }
+
+  .hero-left {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-center {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .hero-right {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-highlight {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero-left {
+    order: 1;
+    text-align: center;
+  }
+
+  .hero-center {
+    order: 2;
+  }
+
+  .hero-right {
+    order: 3;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-highlight {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-highlight {
+    font-size: 2rem;
+  }
+
+  .discord-widget {
+    max-width: 100%;
+  }
+}

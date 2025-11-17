@@ -1,0 +1,137 @@
+.stats-section {
+  width: 100%;
+  padding: 4rem 2rem;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background: transparent;
+  border: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.stat-icon {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.stat-icon svg {
+  width: 60px;
+  height: 60px;
+}
+
+.stat-number {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 1rem 0;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  letter-spacing: 0.1rem;
+  line-height: 1;
+}
+
+.stat-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+  letter-spacing: 0.05rem;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.8));
+  }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .stats-container {
+    gap: 2rem;
+  }
+
+  .stat-number {
+    font-size: 3rem;
+  }
+
+  .stat-icon svg {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 968px) {
+  .stats-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .stats-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 500px;
+  }
+
+  .stat-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 3.5rem;
+  }
+
+  .stat-icon svg {
+    width: 45px;
+    height: 45px;
+  }
+
+  .stat-text {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-section {
+    padding: 2rem 1rem;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+
+  .stat-icon svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .stat-text {
+    font-size: 0.85rem;
+  }
+}
+
