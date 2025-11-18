@@ -1,12 +1,39 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './DiscordWidget.css'
 
 const DiscordWidget = ({ serverId }) => {
   const widgetRef = useRef(null)
+  const containerRef = useRef(null)
+  const [shouldLoad, setShouldLoad] = useState(false)
 
   useEffect(() => {
-    // El widget de Discord se carga dinámicamente
-    if (serverId && widgetRef.current) {
+    // Solo cargar el widget cuando sea visible (lazy load)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShouldLoad(true)
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.1, rootMargin: '100px' }
+    )
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    // El widget de Discord se carga dinámicamente solo cuando es visible
+    if (shouldLoad && serverId && widgetRef.current) {
       // Limpiar contenido anterior
       widgetRef.current.innerHTML = ''
       
@@ -19,10 +46,11 @@ const DiscordWidget = ({ serverId }) => {
       iframe.frameBorder = '0'
       iframe.sandbox = 'allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts'
       iframe.className = 'discord-iframe'
+      iframe.loading = 'lazy'
       
       widgetRef.current.appendChild(iframe)
     }
-  }, [serverId])
+  }, [serverId, shouldLoad])
 
   if (!serverId) {
     return (
@@ -33,12 +61,26 @@ const DiscordWidget = ({ serverId }) => {
   }
 
   return (
-    <div className="discord-widget-container">
+    <div ref={containerRef} className="discord-widget-container">
       <div className="discord-widget-header">
         <h3 className="discord-widget-title">ÚNETE A NUESTRO DISCORD</h3>
         <p className="discord-widget-subtitle">Comunidad activa en tiempo real</p>
       </div>
-      <div ref={widgetRef} className="discord-widget-embed"></div>
+      <div ref={widgetRef} className="discord-widget-embed">
+        {!shouldLoad && (
+          <div style={{ 
+            width: '350px', 
+            height: '500px', 
+            backgroundColor: 'transparent',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#ffffff'
+          }}>
+            Cargando...
+          </div>
+        )}
+      </div>
     </div>
   )
 }

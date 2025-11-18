@@ -88,7 +88,7 @@ const StatsSection = () => {
     if (!isVisible) return
 
     const duration = 2000 // 2 segundos
-    const steps = 60
+    const steps = 30 // Reducido de 60 a 30 para menos actualizaciones
     const stepDuration = duration / steps
 
     const timers = []

@@ -34,7 +34,7 @@
   align-items: center;
   justify-content: center;
   filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
-  animation: pulse 2s ease-in-out infinite;
+  animation: pulse 3s ease-in-out infinite;
 }
 
 .stat-icon svg {

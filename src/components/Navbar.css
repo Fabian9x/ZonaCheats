@@ -61,7 +61,7 @@
   transition: transform 0.3s ease;
   filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
   transform: translateY(50%);
-  animation: float 3s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -75,7 +75,7 @@
 
 .logo:hover .logo-image {
   transform: translateY(50%) scale(1.05);
-  animation: floatHover 3s ease-in-out infinite;
+  animation: floatHover 4s ease-in-out infinite;
 }
 
 @keyframes floatHover {
