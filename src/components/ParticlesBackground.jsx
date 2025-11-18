@@ -68,7 +68,7 @@ const particlesConfig = {
     detect_on: 'canvas',
     events: {
       onhover: {
-        enable: true,
+        enable: false,
         mode: 'repulse'
       },
       onclick: {
@@ -126,6 +126,10 @@ const ParticlesBackground = () => {
           jsonConfig.particles.color.value = '#ff0000'
           jsonConfig.particles.line_linked.color = '#ff0000'
           jsonConfig.particles.shape.stroke.color = '#000000'
+          // Desactivar interactividad del mouse para mejor rendimiento
+          if (jsonConfig.interactivity && jsonConfig.interactivity.events) {
+            jsonConfig.interactivity.events.onhover = { enable: false, mode: 'repulse' }
+          }
           config = jsonConfig
         }
       } catch (error) {
