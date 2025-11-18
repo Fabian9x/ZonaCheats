@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 const particlesConfig = {
   particles: {
     number: {
-      value: 60,
+      value: 40,
       density: {
         enable: true,
         value_area: 800
@@ -45,7 +45,7 @@ const particlesConfig = {
     },
     line_linked: {
       enable: true,
-      distance: 150,
+      distance: 120,
       color: '#ff0000',
       opacity: 0.4,
       width: 1
@@ -72,7 +72,7 @@ const particlesConfig = {
         mode: 'repulse'
       },
       onclick: {
-        enable: true,
+        enable: false,
         mode: 'push'
       },
       resize: true
@@ -102,7 +102,7 @@ const particlesConfig = {
       }
     }
   },
-  retina_detect: true
+  retina_detect: false
 }
 
 const ParticlesBackground = () => {
@@ -129,6 +129,11 @@ const ParticlesBackground = () => {
           // Desactivar interactividad del mouse para mejor rendimiento
           if (jsonConfig.interactivity && jsonConfig.interactivity.events) {
             jsonConfig.interactivity.events.onhover = { enable: false, mode: 'repulse' }
+            jsonConfig.interactivity.events.onclick = { enable: false, mode: 'push' }
+          }
+          // Desactivar retina_detect para mejor rendimiento
+          if (jsonConfig.retina_detect !== undefined) {
+            jsonConfig.retina_detect = false
           }
           config = jsonConfig
         }

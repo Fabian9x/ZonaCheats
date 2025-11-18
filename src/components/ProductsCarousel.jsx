@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 import './ProductsCarousel.css'
 import PurchaseModal from './PurchaseModal'
 
@@ -7,13 +7,13 @@ const ProductsCarousel = () => {
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const getImagePath = (imageName) => {
+  const getImagePath = useCallback((imageName) => {
     return import.meta.env.DEV 
       ? `/${imageName}` 
       : `${import.meta.env.BASE_URL}${imageName}`
-  }
+  }, [])
 
-  const products = [
+  const products = useMemo(() => [
     {
       id: 1,
       name: 'PROYECTO SUPREME',
@@ -59,41 +59,37 @@ const ProductsCarousel = () => {
       price60: { sol: 180, usd: 48 },
       price365: { sol: 280, usd: 75 }
     }
-  ]
+  ], [getImagePath])
+
+  const maxIndex = useMemo(() => Math.max(0, products.length - 3), [products.length])
 
   // Animación automática
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => {
         // Avanzar de uno en uno, pero no más allá de products.length - 3
-        const maxIndex = Math.max(0, products.length - 3)
         return prevIndex >= maxIndex ? 0 : prevIndex + 1
       })
     }, 4000) // Cambia cada 4 segundos
 
     return () => clearInterval(interval)
-  }, [products.length])
+  }, [maxIndex])
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => {
-      // Avanzar de uno en uno, pero no más allá de products.length - 3
-      const maxIndex = Math.max(0, products.length - 3)
       return prevIndex >= maxIndex ? 0 : prevIndex + 1
     })
-  }
+  }, [maxIndex])
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => {
-      // Retroceder de uno en uno
-      const maxIndex = Math.max(0, products.length - 3)
       return prevIndex === 0 ? maxIndex : prevIndex - 1
     })
-  }
+  }, [maxIndex])
 
-  const goToSlide = (index) => {
-    const maxIndex = Math.max(0, products.length - 3)
+  const goToSlide = useCallback((index) => {
     setCurrentIndex(Math.min(index, maxIndex))
-  }
+  }, [maxIndex])
 
 
   return (
@@ -126,6 +122,8 @@ const ProductsCarousel = () => {
                       src={product.image} 
                       alt={product.alt}
                       className="product-image"
+                      loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                         e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"%3E%3Crect fill="%23111" width="400" height="300"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%23fff" font-size="20"%3EImagen del producto%3C/text%3E%3C/svg%3E'
                       }}

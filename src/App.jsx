@@ -10,7 +10,13 @@ import './App.css'
 
 function App() {
   return (
-    <Router basename={import.meta.env.DEV ? '/' : '/ZonaCheats/'}>
+    <Router 
+      basename={import.meta.env.DEV ? '/' : '/ZonaCheats/'}
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true
+      }}
+    >
       <div className="app">
         <ParticlesBackground />
         <Navbar />

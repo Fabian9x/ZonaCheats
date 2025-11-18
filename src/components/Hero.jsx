@@ -32,6 +32,8 @@ const Hero = () => {
               src={imagePath}
               alt="ZonaCheats Panel" 
               className="hero-image"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
