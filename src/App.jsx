@@ -18,7 +18,7 @@ function App() {
       }}
     >
       <div className="app">
-        {/* <ParticlesBackground /> */}
+        <ParticlesBackground />
         <Navbar />
         <FloatingDiscordButton />
         <div className="content">
