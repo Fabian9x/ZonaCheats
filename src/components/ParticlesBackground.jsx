@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 const particlesConfig = {
   particles: {
     number: {
-      value: 20,
+      value: 12,
       density: {
         enable: true,
         value_area: 800
@@ -34,7 +34,7 @@ const particlesConfig = {
       }
     },
     size: {
-      value: 5,
+      value: 6,
       random: true,
       anim: {
         enable: false,
@@ -45,14 +45,14 @@ const particlesConfig = {
     },
     line_linked: {
       enable: true,
-      distance: 100,
+      distance: 80,
       color: '#ff0000',
-      opacity: 0.4,
+      opacity: 0.3,
       width: 1
     },
     move: {
       enable: true,
-      speed: 1.5,
+      speed: 0.8,
       direction: 'none',
       random: false,
       straight: false,
