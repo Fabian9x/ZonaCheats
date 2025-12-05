@@ -1,0 +1,237 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #ff0000;
+  overflow: visible;
+  min-height: 80px;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  flex: 1;
+}
+
+.nav-left {
+  justify-content: flex-start;
+}
+
+.nav-right {
+  justify-content: flex-end;
+}
+
+.nav-center {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  bottom: 0;
+  height: 100%;
+  pointer-events: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  pointer-events: auto;
+  text-decoration: none;
+}
+
+.logo-image {
+  height: 150px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+  transform: translateY(50%);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(50%) translateY(0);
+  }
+  50% {
+    transform: translateY(50%) translateY(-10px);
+  }
+}
+
+.logo:hover .logo-image {
+  transform: translateY(50%) scale(1.05);
+  animation: floatHover 4s ease-in-out infinite;
+}
+
+@keyframes floatHover {
+  0%, 100% {
+    transform: translateY(50%) translateY(0) scale(1.05);
+  }
+  50% {
+    transform: translateY(50%) translateY(-10px) scale(1.05);
+  }
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff0000;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ff0000;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #ff0000;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  width: 36px;
+  height: 36px;
+}
+
+.nav-social-link:hover {
+  color: #ff0000;
+  background: rgba(255, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.nav-social-link svg {
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s ease;
+}
+
+.nav-social-link:hover svg {
+  transform: scale(1.1);
+}
+
+/* Discord hover color */
+.nav-right .nav-social-link:nth-of-type(1):hover {
+  color: #5865F2;
+  background: rgba(88, 101, 242, 0.1);
+}
+
+/* TikTok hover color */
+.nav-right .nav-social-link:nth-of-type(2):hover {
+  color: #000000;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* YouTube hover color */
+.nav-right .nav-social-link:nth-of-type(3):hover {
+  color: #FF0000;
+  background: rgba(255, 0, 0, 0.1);
+}
+
+/* WhatsApp hover color */
+.nav-right .nav-social-link:nth-of-type(4):hover {
+  color: #25D366;
+  background: rgba(37, 211, 102, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-left,
+  .nav-right {
+    gap: 1.5rem;
+    flex: 1 1 100%;
+    justify-content: center;
+    order: 2;
+  }
+
+  .nav-center {
+    position: relative;
+    left: auto;
+    transform: none;
+    flex: 1 1 100%;
+    order: 1;
+    margin-bottom: 0.5rem;
+    align-items: flex-end;
+  }
+
+  .logo-image {
+    height: 110px;
+    transform: translateY(50%);
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .nav-left,
+  .nav-right {
+    gap: 1rem;
+  }
+
+  .logo-image {
+    height: 85px;
+    transform: translateY(50%);
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+    letter-spacing: 0.05rem;
+  }
+}
+
