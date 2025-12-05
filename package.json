@@ -2,7 +2,7 @@
   "name": "zonacheats",
   "version": "1.0.0",
   "scripts": {
-    "deploy": "gh-pages -d ."
+    "deploy": "gh-pages -d docs"
   },
   "devDependencies": {
     "gh-pages": "^6.1.0"
