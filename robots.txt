@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fabian9x.github.io/ZonaCheats/sitemap.xml
+
